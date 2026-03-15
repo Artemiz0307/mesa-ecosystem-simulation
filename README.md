@@ -132,6 +132,12 @@ Step 4
 
 ---
 
+## Simulation Demo
+
+The simulation running in the Mesa web interface.
+
+![Mesa Simulation](assets/simulation.gif)
+
 ## Learning Goals
 
 This project explores:
