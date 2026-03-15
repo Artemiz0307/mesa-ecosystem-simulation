@@ -6,7 +6,7 @@ from agent import AnimalAgent
 
 class EcosystemModel(Model):
 
-    def __init__(self, width, height, num_agents):
+    def __init__(self, width=10, height=10, num_agents=20):
 
         self.grid = MultiGrid(width, height, True)
         self.schedule = RandomActivation(self)
@@ -20,6 +20,5 @@ class EcosystemModel(Model):
 
             self.grid.place_agent(agent, (x, y))
             self.schedule.add(agent)
-
     def step(self):
         self.schedule.step()
