@@ -1,29 +1,40 @@
 from mesa.visualization.ModularVisualization import ModularServer
 from mesa.visualization.modules import CanvasGrid
+
 from model import EcosystemModel
+from agent import Predator, Prey
 
 
 def agent_portrayal(agent):
 
-    portrayal = {
-        "Shape": "circle",
-        "Color": "blue",
-        "Filled": "true",
-        "Layer": 0,
-        "r": 0.5
-    }
+    if isinstance(agent, Prey):
+        return {
+            "Shape": "circle",
+            "Color": "green",
+            "Filled": "true",
+            "Layer": 0,
+            "r": 0.5
+        }
 
-    return portrayal
+    if isinstance(agent, Predator):
+        return {
+            "Shape": "circle",
+            "Color": "red",
+            "Filled": "true",
+            "Layer": 1,
+            "r": 0.7
+        }
 
 
-grid = CanvasGrid(agent_portrayal, 10, 10, 500, 500)
+grid = CanvasGrid(agent_portrayal, 20, 20, 600, 600)
 
 server = ModularServer(
     EcosystemModel,
     [grid],
-    "Ecosystem Simulation",
-    {"width": 10, "height": 10, "num_agents": 20}
+    "Predator Prey Simulation",
+    {}
 )
 
 server.port = 8521
+
 server.launch()
